@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UnitransTestSystemsDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="UnitransTestSystemsDBEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="tblCities" EntityType="UnitransTestSystemsDBModel.tblCity" />
+    <EntitySet Name="tblCitySuburbs" EntityType="UnitransTestSystemsDBModel.tblCitySuburb" />
+    <EntitySet Name="tblSuburbs" EntityType="UnitransTestSystemsDBModel.tblSuburb" />
+    <EntitySet Name="tblUserDetails" EntityType="UnitransTestSystemsDBModel.tblUserDetail" />
+    <FunctionImport Name="prc_GetCity" ReturnType="Collection(UnitransTestSystemsDBModel.prc_GetCity_Result)" />
+    <FunctionImport Name="prc_GetSuburb" ReturnType="Collection(UnitransTestSystemsDBModel.prc_GetSuburb_Result)">
+      <Parameter Name="pCityID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="prc_GetUserDetailsByLookupText" ReturnType="Collection(UnitransTestSystemsDBModel.prc_GetUserDetailsByLookupText_Result)">
+      <Parameter Name="pLookupText" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="prc_GetUserDetailsBySearchText" ReturnType="Collection(UnitransTestSystemsDBModel.prc_GetUserDetailsBySearchText_Result)">
+      <Parameter Name="pSearchText" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="tblCity">
+    <Key>
+      <PropertyRef Name="PK_CityID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="PK_CityID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblCitySuburb">
+    <Key>
+      <PropertyRef Name="PKID" />
+      <PropertyRef Name="FK_CityID" />
+      <PropertyRef Name="FK_SuburbID" />
+    </Key>
+    <Property Name="PKID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_CityID" Type="Int32" Nullable="false" />
+    <Property Name="FK_SuburbID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSuburb">
+    <Key>
+      <PropertyRef Name="PK_SuburbID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="PK_SuburbID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblUserDetail">
+    <Key>
+      <PropertyRef Name="PK_UserID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Surname" />
+      <PropertyRef Name="StreetAddress" />
+      <PropertyRef Name="FK_CityID" />
+      <PropertyRef Name="FK_SuburbID" />
+      <PropertyRef Name="PoCode" />
+      <PropertyRef Name="ContactNumber" />
+      <PropertyRef Name="IDNumber" />
+      <PropertyRef Name="DOB" />
+    </Key>
+    <Property Name="PK_UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="StreetAddress" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FK_CityID" Type="Int32" Nullable="false" />
+    <Property Name="FK_SuburbID" Type="Int32" Nullable="false" />
+    <Property Name="PoCode" Type="Int32" Nullable="false" />
+    <Property Name="ContactNumber" Type="Int32" Nullable="false" />
+    <Property Name="IDNumber" Type="String" Nullable="false" MaxLength="13" Unicode="false" FixedLength="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <ComplexType Name="prc_GetCity_Result">
+    <Property Type="Int32" Name="PK_CityID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="prc_GetSuburb_Result">
+    <Property Type="Int32" Name="PK_SuburbID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="prc_GetUserDetailsByLookupText_Result">
+    <Property Type="Int32" Name="PK_UserID" Nullable="false" />
+    <Property Type="String" Name="SearchText" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="prc_GetUserDetailsBySearchText_Result">
+    <Property Type="Int32" Name="PK_UserID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Surname" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="StreetAddress" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="PoCode" Nullable="false" />
+    <Property Type="DateTime" Name="DOB" Nullable="false" Precision="23" />
+    <Property Type="String" Name="IDNumber" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="PK_SuburbID" Nullable="true" />
+    <Property Type="Int32" Name="PK_CityID" Nullable="true" />
+    <Property Type="String" Name="Suburb_City" Nullable="true" MaxLength="101" />
+  </ComplexType>
+</Schema>

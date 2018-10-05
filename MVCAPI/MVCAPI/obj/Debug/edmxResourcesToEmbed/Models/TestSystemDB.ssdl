@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UnitransTestSystemsDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="UnitransTestSystemsDBModelStoreContainer">
+    <EntitySet Name="tblCity" EntityType="UnitransTestSystemsDBModel.Store.tblCity" store:Type="Tables" store:Schema="dbo" store:Name="tblCity">
+      <DefiningQuery>SELECT 
+      [tblCity].[PK_CityID] AS [PK_CityID], 
+      [tblCity].[Name] AS [Name]
+      FROM [dbo].[tblCity] AS [tblCity]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblCitySuburb" EntityType="UnitransTestSystemsDBModel.Store.tblCitySuburb" store:Type="Tables" store:Schema="dbo" store:Name="tblCitySuburb">
+      <DefiningQuery>SELECT 
+      [tblCitySuburb].[PKID] AS [PKID], 
+      [tblCitySuburb].[FK_CityID] AS [FK_CityID], 
+      [tblCitySuburb].[FK_SuburbID] AS [FK_SuburbID]
+      FROM [dbo].[tblCitySuburb] AS [tblCitySuburb]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblSuburb" EntityType="UnitransTestSystemsDBModel.Store.tblSuburb" store:Type="Tables" store:Schema="dbo" store:Name="tblSuburb">
+      <DefiningQuery>SELECT 
+      [tblSuburb].[PK_SuburbID] AS [PK_SuburbID], 
+      [tblSuburb].[Name] AS [Name]
+      FROM [dbo].[tblSuburb] AS [tblSuburb]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblUserDetails" EntityType="UnitransTestSystemsDBModel.Store.tblUserDetails" store:Type="Tables" store:Schema="dbo" store:Name="tblUserDetails">
+      <DefiningQuery>SELECT 
+      [tblUserDetails].[PK_UserID] AS [PK_UserID], 
+      [tblUserDetails].[Name] AS [Name], 
+      [tblUserDetails].[Surname] AS [Surname], 
+      [tblUserDetails].[StreetAddress] AS [StreetAddress], 
+      [tblUserDetails].[FK_CityID] AS [FK_CityID], 
+      [tblUserDetails].[FK_SuburbID] AS [FK_SuburbID], 
+      [tblUserDetails].[PoCode] AS [PoCode], 
+      [tblUserDetails].[ContactNumber] AS [ContactNumber], 
+      [tblUserDetails].[IDNumber] AS [IDNumber], 
+      [tblUserDetails].[DOB] AS [DOB]
+      FROM [dbo].[tblUserDetails] AS [tblUserDetails]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'UnitransTestSystemsDB.dbo.tblCity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="tblCity">
+    <Key>
+      <PropertyRef Name="PK_CityID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="PK_CityID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'UnitransTestSystemsDB.dbo.tblCitySuburb' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="tblCitySuburb">
+    <Key>
+      <PropertyRef Name="PKID" />
+      <PropertyRef Name="FK_CityID" />
+      <PropertyRef Name="FK_SuburbID" />
+    </Key>
+    <Property Name="PKID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FK_CityID" Type="int" Nullable="false" />
+    <Property Name="FK_SuburbID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'UnitransTestSystemsDB.dbo.tblSuburb' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="tblSuburb">
+    <Key>
+      <PropertyRef Name="PK_SuburbID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="PK_SuburbID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'UnitransTestSystemsDB.dbo.tblUserDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="tblUserDetails">
+    <Key>
+      <PropertyRef Name="PK_UserID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Surname" />
+      <PropertyRef Name="StreetAddress" />
+      <PropertyRef Name="FK_CityID" />
+      <PropertyRef Name="FK_SuburbID" />
+      <PropertyRef Name="PoCode" />
+      <PropertyRef Name="ContactNumber" />
+      <PropertyRef Name="IDNumber" />
+      <PropertyRef Name="DOB" />
+    </Key>
+    <Property Name="PK_UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Surname" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="StreetAddress" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="FK_CityID" Type="int" Nullable="false" />
+    <Property Name="FK_SuburbID" Type="int" Nullable="false" />
+    <Property Name="PoCode" Type="int" Nullable="false" />
+    <Property Name="ContactNumber" Type="int" Nullable="false" />
+    <Property Name="IDNumber" Type="varchar" Nullable="false" MaxLength="13" />
+    <Property Name="DOB" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Function Name="prc_GetCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="prc_GetSuburb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pCityID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="prc_GetUserDetailsByLookupText" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pLookupText" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="prc_GetUserDetailsBySearchText" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pSearchText" Type="varchar" Mode="In" />
+  </Function>
+</Schema>

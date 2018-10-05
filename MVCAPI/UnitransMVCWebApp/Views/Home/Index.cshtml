@@ -1,0 +1,108 @@
+﻿<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.8.24.js"></script>
+@model IEnumerable<UnitransMVCWebApp.Models.prc_GetUserDetailsBySearchText_Result>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div>
+    <p>
+        @Html.ActionLink("Create New", "AddOrEdit")
+    </p>
+    @using (Html.BeginForm())
+    {
+        <label>Search User Details</label>
+        <input id="searchText" name="searchText" /> <input type="submit" value="Search" />
+               
+    }
+</div>
+<table>
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StreetAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PoCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Suburb_City)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PoCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Suburb_City)
+            </td>
+            <td>
+
+                @Html.ActionLink("Edit", "AddOrEdit", new { id = item.PK_UserID })
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.PK_UserID })
+
+            </td>
+        </tr>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <h1>@TempData["Success"]</h1>
+    }
+
+</table>
+
+
+@section Scripts{
+
+    @Scripts.Render("~/bundles/jqueryval");
+       <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#searchText").autocomplete({
+                source: '@Url.Action("GetByLookup", "Home")'
+            });
+        });
+
+    </script>
+}

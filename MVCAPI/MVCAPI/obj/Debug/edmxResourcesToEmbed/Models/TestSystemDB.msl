@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UnitransTestSystemsDBModelStoreContainer" CdmEntityContainer="UnitransTestSystemsDBEntities">
+    <EntitySetMapping Name="tblCities">
+      <EntityTypeMapping TypeName="UnitransTestSystemsDBModel.tblCity">
+        <MappingFragment StoreEntitySet="tblCity">
+          <ScalarProperty Name="PK_CityID" ColumnName="PK_CityID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCitySuburbs">
+      <EntityTypeMapping TypeName="UnitransTestSystemsDBModel.tblCitySuburb">
+        <MappingFragment StoreEntitySet="tblCitySuburb">
+          <ScalarProperty Name="PKID" ColumnName="PKID" />
+          <ScalarProperty Name="FK_CityID" ColumnName="FK_CityID" />
+          <ScalarProperty Name="FK_SuburbID" ColumnName="FK_SuburbID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSuburbs">
+      <EntityTypeMapping TypeName="UnitransTestSystemsDBModel.tblSuburb">
+        <MappingFragment StoreEntitySet="tblSuburb">
+          <ScalarProperty Name="PK_SuburbID" ColumnName="PK_SuburbID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUserDetails">
+      <EntityTypeMapping TypeName="UnitransTestSystemsDBModel.tblUserDetail">
+        <MappingFragment StoreEntitySet="tblUserDetails">
+          <ScalarProperty Name="PK_UserID" ColumnName="PK_UserID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+          <ScalarProperty Name="FK_CityID" ColumnName="FK_CityID" />
+          <ScalarProperty Name="FK_SuburbID" ColumnName="FK_SuburbID" />
+          <ScalarProperty Name="PoCode" ColumnName="PoCode" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="prc_GetCity" FunctionName="UnitransTestSystemsDBModel.Store.prc_GetCity">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UnitransTestSystemsDBModel.prc_GetCity_Result">
+          <ScalarProperty Name="PK_CityID" ColumnName="PK_CityID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="prc_GetSuburb" FunctionName="UnitransTestSystemsDBModel.Store.prc_GetSuburb">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UnitransTestSystemsDBModel.prc_GetSuburb_Result">
+          <ScalarProperty Name="PK_SuburbID" ColumnName="PK_SuburbID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="prc_GetUserDetailsByLookupText" FunctionName="UnitransTestSystemsDBModel.Store.prc_GetUserDetailsByLookupText">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UnitransTestSystemsDBModel.prc_GetUserDetailsByLookupText_Result">
+          <ScalarProperty Name="PK_UserID" ColumnName="PK_UserID" />
+          <ScalarProperty Name="SearchText" ColumnName="SearchText" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="prc_GetUserDetailsBySearchText" FunctionName="UnitransTestSystemsDBModel.Store.prc_GetUserDetailsBySearchText">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UnitransTestSystemsDBModel.prc_GetUserDetailsBySearchText_Result">
+          <ScalarProperty Name="PK_UserID" ColumnName="PK_UserID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+          <ScalarProperty Name="PoCode" ColumnName="PoCode" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+          <ScalarProperty Name="PK_SuburbID" ColumnName="PK_SuburbID" />
+          <ScalarProperty Name="PK_CityID" ColumnName="PK_CityID" />
+          <ScalarProperty Name="Suburb_City" ColumnName="Suburb City" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

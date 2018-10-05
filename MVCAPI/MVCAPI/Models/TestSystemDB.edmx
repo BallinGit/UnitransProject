@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UnitransTestSystemsDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="UnitransTestSystemsDBModelStoreContainer">
+          <EntitySet Name="tblCity" EntityType="UnitransTestSystemsDBModel.Store.tblCity" store:Type="Tables" store:Schema="dbo" store:Name="tblCity">
+            <DefiningQuery>SELECT 
+      [tblCity].[PK_CityID] AS [PK_CityID], 
+      [tblCity].[Name] AS [Name]
+      FROM [dbo].[tblCity] AS [tblCity]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblCitySuburb" EntityType="UnitransTestSystemsDBModel.Store.tblCitySuburb" store:Type="Tables" store:Schema="dbo" store:Name="tblCitySuburb">
+            <DefiningQuery>SELECT 
+      [tblCitySuburb].[PKID] AS [PKID], 
+      [tblCitySuburb].[FK_CityID] AS [FK_CityID], 
+      [tblCitySuburb].[FK_SuburbID] AS [FK_SuburbID]
+      FROM [dbo].[tblCitySuburb] AS [tblCitySuburb]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblSuburb" EntityType="UnitransTestSystemsDBModel.Store.tblSuburb" store:Type="Tables" store:Schema="dbo" store:Name="tblSuburb">
+            <DefiningQuery>SELECT 
+      [tblSuburb].[PK_SuburbID] AS [PK_SuburbID], 
+      [tblSuburb].[Name] AS [Name]
+      FROM [dbo].[tblSuburb] AS [tblSuburb]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblUserDetails" EntityType="UnitransTestSystemsDBModel.Store.tblUserDetails" store:Type="Tables" store:Schema="dbo" store:Name="tblUserDetails">
+            <DefiningQuery>SELECT 
+      [tblUserDetails].[PK_UserID] AS [PK_UserID], 
+      [tblUserDetails].[Name] AS [Name], 
+      [tblUserDetails].[Surname] AS [Surname], 
+      [tblUserDetails].[StreetAddress] AS [StreetAddress], 
+      [tblUserDetails].[FK_CityID] AS [FK_CityID], 
+      [tblUserDetails].[FK_SuburbID] AS [FK_SuburbID], 
+      [tblUserDetails].[PoCode] AS [PoCode], 
+      [tblUserDetails].[ContactNumber] AS [ContactNumber], 
+      [tblUserDetails].[IDNumber] AS [IDNumber], 
+      [tblUserDetails].[DOB] AS [DOB]
+      FROM [dbo].[tblUserDetails] AS [tblUserDetails]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'UnitransTestSystemsDB.dbo.tblCity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="tblCity">
+          <Key>
+            <PropertyRef Name="PK_CityID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="PK_CityID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'UnitransTestSystemsDB.dbo.tblCitySuburb' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="tblCitySuburb">
+          <Key>
+            <PropertyRef Name="PKID" />
+            <PropertyRef Name="FK_CityID" />
+            <PropertyRef Name="FK_SuburbID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FK_CityID" Type="int" Nullable="false" />
+          <Property Name="FK_SuburbID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'UnitransTestSystemsDB.dbo.tblSuburb' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="tblSuburb">
+          <Key>
+            <PropertyRef Name="PK_SuburbID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="PK_SuburbID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'UnitransTestSystemsDB.dbo.tblUserDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="tblUserDetails">
+          <Key>
+            <PropertyRef Name="PK_UserID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Surname" />
+            <PropertyRef Name="StreetAddress" />
+            <PropertyRef Name="FK_CityID" />
+            <PropertyRef Name="FK_SuburbID" />
+            <PropertyRef Name="PoCode" />
+            <PropertyRef Name="ContactNumber" />
+            <PropertyRef Name="IDNumber" />
+            <PropertyRef Name="DOB" />
+          </Key>
+          <Property Name="PK_UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Surname" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="StreetAddress" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FK_CityID" Type="int" Nullable="false" />
+          <Property Name="FK_SuburbID" Type="int" Nullable="false" />
+          <Property Name="PoCode" Type="int" Nullable="false" />
+          <Property Name="ContactNumber" Type="int" Nullable="false" />
+          <Property Name="IDNumber" Type="varchar" Nullable="false" MaxLength="13" />
+          <Property Name="DOB" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Function Name="prc_GetCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="prc_GetSuburb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pCityID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="prc_GetUserDetailsByLookupText" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pLookupText" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="prc_GetUserDetailsBySearchText" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pSearchText" Type="varchar" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UnitransTestSystemsDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="UnitransTestSystemsDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCities" EntityType="UnitransTestSystemsDBModel.tblCity" />
+          <EntitySet Name="tblCitySuburbs" EntityType="UnitransTestSystemsDBModel.tblCitySuburb" />
+          <EntitySet Name="tblSuburbs" EntityType="UnitransTestSystemsDBModel.tblSuburb" />
+          <EntitySet Name="tblUserDetails" EntityType="UnitransTestSystemsDBModel.tblUserDetail" />
+          <FunctionImport Name="prc_GetCity" ReturnType="Collection(UnitransTestSystemsDBModel.prc_GetCity_Result)" />
+          <FunctionImport Name="prc_GetSuburb" ReturnType="Collection(UnitransTestSystemsDBModel.prc_GetSuburb_Result)">
+          <Parameter Name="pCityID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="prc_GetUserDetailsByLookupText" ReturnType="Collection(UnitransTestSystemsDBModel.prc_GetUserDetailsByLookupText_Result)">
+          <Parameter Name="pLookupText" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="prc_GetUserDetailsBySearchText" ReturnType="Collection(UnitransTestSystemsDBModel.prc_GetUserDetailsBySearchText_Result)">
+          <Parameter Name="pSearchText" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="tblCity">
+          <Key>
+            <PropertyRef Name="PK_CityID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="PK_CityID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblCitySuburb">
+          <Key>
+            <PropertyRef Name="PKID" />
+            <PropertyRef Name="FK_CityID" />
+            <PropertyRef Name="FK_SuburbID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_CityID" Type="Int32" Nullable="false" />
+          <Property Name="FK_SuburbID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSuburb">
+          <Key>
+            <PropertyRef Name="PK_SuburbID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="PK_SuburbID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblUserDetail">
+          <Key>
+            <PropertyRef Name="PK_UserID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Surname" />
+            <PropertyRef Name="StreetAddress" />
+            <PropertyRef Name="FK_CityID" />
+            <PropertyRef Name="FK_SuburbID" />
+            <PropertyRef Name="PoCode" />
+            <PropertyRef Name="ContactNumber" />
+            <PropertyRef Name="IDNumber" />
+            <PropertyRef Name="DOB" />
+          </Key>
+          <Property Name="PK_UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="StreetAddress" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FK_CityID" Type="Int32" Nullable="false" />
+          <Property Name="FK_SuburbID" Type="Int32" Nullable="false" />
+          <Property Name="PoCode" Type="Int32" Nullable="false" />
+          <Property Name="ContactNumber" Type="Int32" Nullable="false" />
+          <Property Name="IDNumber" Type="String" Nullable="false" MaxLength="13" Unicode="false" FixedLength="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <ComplexType Name="prc_GetCity_Result">
+          <Property Type="Int32" Name="PK_CityID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="prc_GetSuburb_Result">
+          <Property Type="Int32" Name="PK_SuburbID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="prc_GetUserDetailsByLookupText_Result">
+          <Property Type="Int32" Name="PK_UserID" Nullable="false" />
+          <Property Type="String" Name="SearchText" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="prc_GetUserDetailsBySearchText_Result">
+          <Property Type="Int32" Name="PK_UserID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Surname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="StreetAddress" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="PoCode" Nullable="false" />
+          <Property Type="DateTime" Name="DOB" Nullable="false" Precision="23" />
+          <Property Type="String" Name="IDNumber" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="PK_SuburbID" Nullable="true" />
+          <Property Type="Int32" Name="PK_CityID" Nullable="true" />
+          <Property Type="String" Name="Suburb_City" Nullable="true" MaxLength="101" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UnitransTestSystemsDBModelStoreContainer" CdmEntityContainer="UnitransTestSystemsDBEntities">
+          <EntitySetMapping Name="tblCities">
+            <EntityTypeMapping TypeName="UnitransTestSystemsDBModel.tblCity">
+              <MappingFragment StoreEntitySet="tblCity">
+                <ScalarProperty Name="PK_CityID" ColumnName="PK_CityID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCitySuburbs">
+            <EntityTypeMapping TypeName="UnitransTestSystemsDBModel.tblCitySuburb">
+              <MappingFragment StoreEntitySet="tblCitySuburb">
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+                <ScalarProperty Name="FK_CityID" ColumnName="FK_CityID" />
+                <ScalarProperty Name="FK_SuburbID" ColumnName="FK_SuburbID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSuburbs">
+            <EntityTypeMapping TypeName="UnitransTestSystemsDBModel.tblSuburb">
+              <MappingFragment StoreEntitySet="tblSuburb">
+                <ScalarProperty Name="PK_SuburbID" ColumnName="PK_SuburbID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserDetails">
+            <EntityTypeMapping TypeName="UnitransTestSystemsDBModel.tblUserDetail">
+              <MappingFragment StoreEntitySet="tblUserDetails">
+                <ScalarProperty Name="PK_UserID" ColumnName="PK_UserID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="FK_CityID" ColumnName="FK_CityID" />
+                <ScalarProperty Name="FK_SuburbID" ColumnName="FK_SuburbID" />
+                <ScalarProperty Name="PoCode" ColumnName="PoCode" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetCity" FunctionName="UnitransTestSystemsDBModel.Store.prc_GetCity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UnitransTestSystemsDBModel.prc_GetCity_Result">
+                <ScalarProperty Name="PK_CityID" ColumnName="PK_CityID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetSuburb" FunctionName="UnitransTestSystemsDBModel.Store.prc_GetSuburb">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UnitransTestSystemsDBModel.prc_GetSuburb_Result">
+                <ScalarProperty Name="PK_SuburbID" ColumnName="PK_SuburbID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetUserDetailsByLookupText" FunctionName="UnitransTestSystemsDBModel.Store.prc_GetUserDetailsByLookupText">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UnitransTestSystemsDBModel.prc_GetUserDetailsByLookupText_Result">
+                <ScalarProperty Name="PK_UserID" ColumnName="PK_UserID" />
+                <ScalarProperty Name="SearchText" ColumnName="SearchText" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetUserDetailsBySearchText" FunctionName="UnitransTestSystemsDBModel.Store.prc_GetUserDetailsBySearchText" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UnitransTestSystemsDBModel.prc_GetUserDetailsBySearchText_Result">
+                <ScalarProperty Name="PK_UserID" ColumnName="PK_UserID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="PoCode" ColumnName="PoCode" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="PK_SuburbID" ColumnName="PK_SuburbID" />
+                <ScalarProperty Name="PK_CityID" ColumnName="PK_CityID" />
+                <ScalarProperty Name="Suburb_City" ColumnName="Suburb City" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
